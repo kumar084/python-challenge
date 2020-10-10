@@ -14,7 +14,9 @@ with open(budget_data, 'r') as csvfile:
     #Initializing variables
     counter = 0 
     previous_profit_loss = 0
-    #current_profit_loss = 0
+    positive_shift = 0
+    negative_shift = 0
+    
     #change = []
     for row in csvreader:
         #print(row) 
@@ -28,6 +30,11 @@ with open(budget_data, 'r') as csvfile:
             change = change + 1 
     #print(change)
 
+        if change>positive_shift:
+                positive_shift=change
+        else:
+                negative_shift=change
+
     print("Total months: " + str(counter) + ".")
     #summation of the list
     total = sum(profit_loss)
@@ -36,10 +43,16 @@ with open(budget_data, 'r') as csvfile:
     #average change
     average = round(change/counter)
     print("Average Change = " + str(average))
-    
+
+    #Greatest Increase and Decrease
+    print("Greatest Increase in Profits:" + str(positive_shift))
+    print("Greatest Decrease in Profits:" + str(negative_shift))
+
     #Export Data into a text file
     results=open("Analysis/results.txt","w")
     results.write("Financial Analysis \n------------------\n")
     results.write(f"Total Months: {counter}\n")
     results.write(f"Total: ${total}\n")
     results.write(f"Average Change: ${average}\n")
+    results.write(f"Greatest Increase in Profits: ${positive_shift}\n")
+    results.write(f"Greatest Decrease in Profits:  ${negative_shift}")
