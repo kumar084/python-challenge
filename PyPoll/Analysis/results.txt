@@ -1,3 +1,4 @@
 Eelction Results 
 ------------------
 Total Votes: 3521001
+List of candidates: ['Khan', 'Correy', 'Li', "O'Tooley"]Votes won by each candidate: [2218231, 704200, 492940, 105630]
